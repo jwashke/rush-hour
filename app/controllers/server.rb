@@ -19,11 +19,17 @@ module RushHour
     end
 
     get '/sources/:identifier' do |identifier|
-
       gen_view = ViewGenerator.new(identifier)
       data     = gen_view.data
       view     = gen_view.view
       erb view, locals: {data: data, identifier: identifier}
+    end
+
+    get '/sources/:identifier/urls/:relativepath' do |identifier, relativepath|
+      stats_view = UrlStatistics.new(identifier, relativepath)
+      data = stats_view.data
+      view = stats_view.view
+      erb view, locals: {data: data, identifier: identifier, relativepath: relativepath}
     end
 
   end

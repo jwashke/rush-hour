@@ -3,7 +3,7 @@ require_relative '../test_helper'
 class ViewGeneratorTest < Minitest::Test
   include TestHelper
 
-  def test_it_can_returns_show_with_proper_client_and_payload
+  def test_it_returns_show_with_proper_client_and_payload
     create_client
     create_payload_requests
 
