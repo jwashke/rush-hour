@@ -1,6 +1,6 @@
 require './test/test_helper'
 
-class ViewGeneratorTest < Minitest::Test
+class CreateClientStatisticsTest < Minitest::Test
   include TestHelper
   include Rack::Test::Methods
 
