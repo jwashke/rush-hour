@@ -23,6 +23,8 @@ module RushHour
       gen_view = ViewGenerator.new(identifier)
       data     = gen_view.data
       view     = gen_view.view
+      # require "pry"
+      # binding.pry
       erb view, locals: {data: data, identifier: identifier}
     end
 
