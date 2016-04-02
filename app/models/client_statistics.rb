@@ -1,4 +1,4 @@
-class ViewGenerator
+class ClientStatistics
   attr_reader :identifier,
               :client,
               :view,
