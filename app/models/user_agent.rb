@@ -1,5 +1,6 @@
 class UserAgent < ActiveRecord::Base
   has_many :payload_requests
+  belongs_to :client
 
   validates :browser, presence: true
   validates :os,      presence: true
@@ -12,3 +13,9 @@ class UserAgent < ActiveRecord::Base
     self.distinct.pluck(:os)
   end
 end
+
+# client = Client.find_by(identifier: identifier)
+#
+# client.user_agents.all_web_browsers
+#
+# UserAgent.all_web_browsers

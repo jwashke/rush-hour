@@ -3,8 +3,6 @@ class Resolution < ActiveRecord::Base
   validates :height, presence: true
 
   def self.all_resolutions
-    self.distinct.pluck(:width, :height).map do |pair|
-      "#{pair[0]} x #{pair[1]}"
-    end
+    self.distinct.pluck(:width, :height)
   end
 end

@@ -1,40 +1,31 @@
 class ClientCreator
-  attr_reader :status, :body
+  attr_reader :status,
+              :body,
+              :client
 
   def initialize(params)
-    create_status_and_body(params)
+    @client = Client.new(identifier: params[:identifier],
+                         root_url:   params[:rootUrl])
   end
 
-  def create_client(params)
-    Client.new(identifier: params[:identifier],
-                  rootUrl: params[:rootUrl])
+  def create_client
+    return already_exists if Client.exists?(identifier: client.identifier)
+    return client_created if client.save
+    parameters_missing
   end
 
-  def create_status_and_body(params)
-    client = create_client(params)
-
-    if Client.exists?(identifier: client.identifier)
-      client_already_exists(client)
-    elsif client.save
-      client_created(client)
-    else
-      client_missing_params(client)
-    end
-  end
-
-  def client_already_exists(client)
+  def already_exists
     @status = 403
-    @body = "Client with identifier: \"#{client.identifier}\" already exists!\n"
+    @body   = "Client with identifier: \"#{client.identifier}\" already exists!"
   end
 
-  def client_created(client)
+  def client_created
     @status = 200
-    @body = "{\"identifier\":\"#{client.identifier}\"}\n"
+    @body   = "{\"identifier\":\"#{client.identifier}\"}"
   end
 
-  def client_missing_params(client)
+  def parameters_missing
     @status = 400
-    @body = "#{client.errors.full_messages.join(", ")}\n"
+    @body   = "#{client.errors.full_messages.join(", ")}"
   end
-
 end
