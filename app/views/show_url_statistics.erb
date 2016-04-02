@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1><%= identifier.capitalize %></h1>
+  </div>
+  <div class="identifier-data">
+    <h4>Max Response Time: <%= data[:max_response_time] %></h4>
+    <h4>Min Response Time: <%= data[:min_response_time] %></h4>
+    <h4>All Response Times Acrosss All Requests: <%= data[:all_response_times] %></h4>
+    <h4>Average Responses Times: <%= data[:average_response_times] %></h4>
+    <h4>Associated HTTP Verbs: <%= data[:find_verbs] %></h4>
+    <h4>Top Three Referrers: <%= data[:top_referrers] %></h4>
+    <h4>Three Most Popular User Agents: <%= data[:top_user_agents] %></h4>
+
+  </div>
+</div>

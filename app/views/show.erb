@@ -13,5 +13,9 @@
     <h4>OS Breakdown Across All Requests: <%= data[:os_breakdown] %></h4>
     <h4>Screen Resolutions Across All Requests: <%= data[:screen_resolutions] %></h4>
 
+    <% data[:all_urls_from_most_to_least].each do |key, _value| %>
+      <h4><a href="/sources/<%= identifier %>/urls<%= key[1] %>" target="_blank"><%= "#{identifier}" %><%= "#{key[1]}" %></a></h4>
+    <% end %>
+
   </div>
 </div>

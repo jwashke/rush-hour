@@ -1,13 +1,13 @@
 require_relative '../test_helper'
 
-class ViewGeneratorTest < Minitest::Test
+class ClientStatisticsTest < Minitest::Test
   include TestHelper
 
-  def test_it_can_returns_show_with_proper_client_and_payload
+  def test_it_returns_show_with_proper_client_and_payload
     create_client
     create_payload_requests
 
-    gen_view = ViewGenerator.new("jumpstartlabs")
+    gen_view = ClientStatistics.new("jumpstartlabs")
 
     assert_equal :show, gen_view.view
   end
@@ -15,7 +15,7 @@ class ViewGeneratorTest < Minitest::Test
   def test_it_returns_error_page_with_invalid_client
     create_payload_requests
 
-    gen_view = ViewGenerator.new("jumpstartlabs")
+    gen_view = ClientStatistics.new("jumpstartlabs")
 
     assert_equal :client_does_not_exist, gen_view.view
   end
@@ -23,7 +23,7 @@ class ViewGeneratorTest < Minitest::Test
   def test_it_returns_error_page_with_invalid_client
     create_client
 
-    gen_view = ViewGenerator.new("jumpstartlabs")
+    gen_view = ClientStatistics.new("jumpstartlabs")
 
     assert_equal :client_has_no_requests, gen_view.view
   end
