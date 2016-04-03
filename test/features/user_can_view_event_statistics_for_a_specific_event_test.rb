@@ -10,11 +10,15 @@ class UserCanViewStatisticsForSpecificEvents < Minitest::Test
     visit '/sources/jumpstartlabs/events/name'
 
     assert page.has_content?("Jumpstartlabs")
-    assert page.has_content?("name")
-    # save_and_open_page
+    assert page.has_content?("event: /name")
 
     within(".event-stats") do
       assert page.has_content?("Breakdown By Hour")
+    end
+
+    within(".success") do
+      assert page.has_content?("Total Requests")
+      assert page.has_content?("1")
     end
   end
 end
