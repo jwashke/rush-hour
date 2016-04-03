@@ -23,7 +23,7 @@ class EventStatisticsTest < Minitest::Test
 
     event = EventStatistics.new("jumpstartlabs", "neverHAPPENED")
 
-    assert_equal :event_does_not_exist, event.view
+    assert_equal :error, event.view
   end
 
   def hour_freq

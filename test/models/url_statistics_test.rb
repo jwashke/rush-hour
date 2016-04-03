@@ -17,7 +17,7 @@ class UrlStatisticsTest < Minitest::Test
 
     stats_view = UrlStatistics.new("jumpstartlabs", "blog")
 
-    assert_equal :url_does_not_exist, stats_view.view
+    assert_equal :error, stats_view.view
   end
 
   def create_payload_requests

@@ -12,9 +12,11 @@ class ClientStatistics
 
   def get_client_view
     if client_does_not_exist?
-      :client_does_not_exist
+      @data = "Client doesn't exist"
+      :error
     elsif client_does_not_have_requests?
-      :client_has_no_requests
+      @data = "Client has no requests"
+      :error
     else
       @data = client_data
       :show

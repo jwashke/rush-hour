@@ -18,7 +18,8 @@ class UrlStatistics
       @data = url_data
       :show_url_statistics
     else
-      :url_does_not_exist
+      @data = "Url does not exist"
+      :error
     end
   end
 

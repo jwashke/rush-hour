@@ -17,7 +17,7 @@ class ClientStatisticsTest < Minitest::Test
 
     client_stats = ClientStatistics.new("jumpstartlabs")
 
-    assert_equal :client_does_not_exist, client_stats.get_client_view
+    assert_equal :error, client_stats.get_client_view
   end
 
   def test_it_returns_error_page_with_invalid_client
@@ -25,7 +25,7 @@ class ClientStatisticsTest < Minitest::Test
 
     client_stats = ClientStatistics.new("jumpstartlabs")
 
-    assert_equal :client_has_no_requests, client_stats.get_client_view
+    assert_equal :error, client_stats.get_client_view
   end
 
   def create_payload_requests
