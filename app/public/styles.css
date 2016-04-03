@@ -1,0 +1,21 @@
+.thumbnail {
+  background-color: #f0f0f0;
+}
+
+.navbar {
+  background-color:  #3e4038;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+  font-weight: bold;
+  text-align: center;
+}
+
+table {
+  display:block;
+  margin: 0 auto;
+}

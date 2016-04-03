@@ -4,6 +4,11 @@ module RushHour
       erb :error
     end
 
+    get '/' do
+      clients = Client.all
+      erb :index, locals: {clients: clients}
+    end
+
     post '/sources' do
       client_creator = ClientCreator.new(params)
       client_creator.create_client

@@ -14,7 +14,6 @@ class EventStatistics
   end
 
   def breakdown_by_hour
-    # pr.group(:requested_at).count
     pr.map.with_object(initialize_hour_hash) do |preq, hash|
       hash[Time.parse(preq.requested_at).hour] += 1
     end
@@ -29,7 +28,7 @@ class EventStatistics
       :event_does_not_exist
     else
       @data = breakdown_by_hour
-      @total = event.number_of_times_received
+      @total = breakdown_by_hour.values.reduce(:+)
       :event_statistics
     end
   end
