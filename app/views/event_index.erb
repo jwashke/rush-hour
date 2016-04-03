@@ -1,1 +1,7 @@
 <h1>Events Index</h1>
+
+<% events.each do |event| %>
+  <h3><a href="/sources/<%= identifier %>/events/<%= event.name %>">
+    <%= identifier %>/events/<%= event.name %>
+  </a></h3>
+<% end %>
