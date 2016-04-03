@@ -14,7 +14,7 @@ class PayloadLoader
       ip:            load_ip(raw_payload["ip"]),
       client:        get_client_id(identifier),
       resolution:    load_resolution(raw_payload["resolutionWidth"],
-                                    raw_payload["resolutionHeight"])
+                                     raw_payload["resolutionHeight"])
       })
   end
 
