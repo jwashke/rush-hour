@@ -97,16 +97,16 @@ class UrlTest < Minitest::Test
 
   def test_it_returns_top_three_referrers
     url = Url.create(root_url: "www.jumpstartlabs.com",
-                          path: "/blog")
+                     path:     "/blog")
 
     turing = Referral.create(root_url: "www.turing.io",
-                                 path: "/today")
+                             path:     "/today")
     google = Referral.create(root_url: "www.google.com",
-                                 path: "/today")
+                             path:     "/today")
     zomble = Referral.create(root_url: "www.zomble.com",
-                                 path: "/today")
+                             path:     "/today")
     poop   = Referral.create(root_url: "www.poop.org",
-                                 path: "/today")
+                             path:     "/today")
 
     create_payload_requests_with_referral_id(url.id, turing.id, google.id, zomble.id, poop.id)
 
@@ -120,7 +120,7 @@ class UrlTest < Minitest::Test
 
   def test_it_returns_top_three_user_agents
     url = Url.create(root_url: "www.jumpstartlabs.com",
-                          path: "/blog")
+                     path:     "/blog")
 
     ua1 = UserAgent.create(browser: "Chrome 24.0.1309",
                            os:      "Mac OS X 10.8.2")

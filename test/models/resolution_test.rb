@@ -4,8 +4,8 @@ class ResolutionTest < Minitest::Test
   include TestHelper
 
   def test_it_can_save_resolution
-    Resolution.create(width: "1920",
-                     height: "1280")
+    Resolution.create(width:  "1920",
+                      height: "1280")
 
     resolution = Resolution.first
 
@@ -26,10 +26,10 @@ class ResolutionTest < Minitest::Test
   end
 
   def test_it_returns_all_resolutions
-    Resolution.create(width: "1920",
-                     height: "1280")
-    Resolution.create(width: "800",
-                     height: "600")
+    Resolution.create(width:  "1920",
+                      height: "1280")
+    Resolution.create(width:  "800",
+                      height: "600")
 
     assert_equal [["1920", "1280"], ["800", "600"]], Resolution.all_resolutions
   end

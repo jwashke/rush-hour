@@ -5,7 +5,7 @@ class UserAgentTest < Minitest::Test
 
   def test_it_can_save_user_agent
     UserAgent.create(browser: "Chrome 24.0.1309",
-                          os: "Mac OS X 10.8.2")
+                     os:      "Mac OS X 10.8.2")
 
     user_agent = UserAgent.first
 
@@ -27,13 +27,13 @@ class UserAgentTest < Minitest::Test
 
   def test_it_returns_web_browsers
     ua1 = UserAgent.create(browser: "Chrome 24.0.1309",
-                           os: "Mac OS X 10.8.2")
+                           os:      "Mac OS X 10.8.2")
 
     ua2 = UserAgent.create(browser: "IE 9.0",
-                           os: "Mac OS X 10.8.2")
+                           os:      "Mac OS X 10.8.2")
 
     client = create_client
-    # probably have to take these out of user agent into payload_requests
+
     client.payload_requests.joins(:user_agent).group(:browser).count
     client.user_agents.group(:browser).distinct.count
 
@@ -45,10 +45,10 @@ class UserAgentTest < Minitest::Test
 
   def test_it_returns_web_browsers_associated_with_client_user_agents
     ua1 = UserAgent.create(browser: "Chrome 24.0.1309",
-                           os: "Mac OS X 10.8.2")
+                           os:      "Mac OS X 10.8.2")
 
     ua2 = UserAgent.create(browser: "IE 9.0",
-                           os: "Mac OS X 10.8.2")
+                           os:      "Mac OS X 10.8.2")
 
     client = create_client
 
@@ -59,10 +59,10 @@ class UserAgentTest < Minitest::Test
 
   def test_it_returns_operating_systems
     ua1 = UserAgent.create(browser: "Chrome 24.0.1309",
-                          os: "Windows 10")
+                           os:      "Windows 10")
 
     ua2 = UserAgent.create(browser: "IE 9.0",
-                          os: "Mac OS X 10.8.2")
+                           os:      "Mac OS X 10.8.2")
 
     client = create_client
 
@@ -92,6 +92,7 @@ class UserAgentTest < Minitest::Test
       resolution_id:   1,
       ip_id:           1,
       client_id:       client_id, )
+
     PayloadRequest.create(
       url_id:          1,
       requested_at:    "2013-02-16 21:38:28 -0700",
@@ -103,6 +104,7 @@ class UserAgentTest < Minitest::Test
       resolution_id:   1,
       ip_id:           1,
       client_id:       client_id )
+
     PayloadRequest.create(
       url_id:          1,
       requested_at:    "2013-02-16 21:38:28 -0700",
@@ -128,6 +130,7 @@ class UserAgentTest < Minitest::Test
       resolution_id:   1,
       ip_id:           1,
       client_id:       client_id, )
+
     PayloadRequest.create(
       url_id:          1,
       requested_at:    "2013-02-16 21:38:28 -0700",
@@ -139,6 +142,7 @@ class UserAgentTest < Minitest::Test
       resolution_id:   1,
       ip_id:           1,
       client_id:       client_id )
+      
     PayloadRequest.create(
       url_id:          1,
       requested_at:    "2013-02-16 21:38:28 -0700",
