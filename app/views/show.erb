@@ -2,20 +2,83 @@
   <div class="col-md-12">
     <h1><%= identifier.capitalize %></h1>
   </div>
-  <div class="identifier-data">
-    <h4>Average Response Time: <%= data[:average_response_time] %></h4>
-    <h4>Max Response Time: <%= data[:max_response_time] %></h4>
-    <h4>Min Response Time: <%= data[:min_response_time] %></h4>
-    <h4>Most Frequent Request Type: <%= data[:most_frequent_request_type] %></h4>
-    <h4>All HTTP Verbs Used: <%= data[:all_http_verbs_used] %></h4>
-    <h4>All URLs from Most to Least Requested: <%= data[:all_urls_from_most_to_least] %></h4>
-    <h4>Web Browser Breakdown Across All Requests: <%= data[:web_browser_breakdown] %></h4>
-    <h4>OS Breakdown Across All Requests: <%= data[:os_breakdown] %></h4>
-    <h4>Screen Resolutions Across All Requests: <%= data[:screen_resolutions] %></h4>
-
-    <% data[:all_urls_from_most_to_least].each do |key, _value| %>
-      <h4><a href="/sources/<%= identifier %>/urls<%= key[1] %>" target="_blank"><%= "#{identifier}" %><%= "#{key[1]}" %></a></h4>
-    <% end %>
-
+  <div class="identifier-data col-md-12">
+      <table class="table table-hover">
+        <h3>Response Times</h3>
+        <tr>
+          <td>Average</td><td> <%= data[:average_response_time] %></td>
+        </tr>
+        <tr>
+          <td>Maximum</td><td> <%= data[:max_response_time] %></td>
+        </tr>
+        <tr>
+          <td>Minimum</td><td> <%= data[:min_response_time] %></td>
+        </tr>
+      </tr>
+    </table>
   </div>
-</div>
+
+  <div class="identifier-data col-md-12">
+      <table class="table table-hover">
+        <h3>Most Frequent Request Type</h3>
+        <% data[:most_frequent_request_type].each do |data| %>
+        <tr>
+          <td><%= data.first %></h4></td>
+          <td><%= data.last %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+
+    <div class="identifier-data col-md-12">
+        <table class="table table-hover">
+          <h3>HTTP Verbs Used</h3>
+          <% data[:all_http_verbs_used].each do |data| %>
+          <tr>
+            <td><%= data%></h4></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+
+      <div class="identifier-data col-md-12">
+          <table class="table table-hover">
+            <h3>All URLs from Most to Least Requested</h3>
+            <% data[:all_urls_from_most_to_least].each do |data| %>
+            <tr>
+              <td><%= data.first.join("") %></h4></td>
+              <td><%= data.last %></td>
+            </tr>
+            <% end %>
+          </table>
+        </div>
+
+        <div class="identifier-data col-md-12">
+            <table class="table table-hover">
+              <h3>Browser, OS & Resolution Breakdown</h3>
+              <tr>
+                <td>Web Browser:</td><td> <%= data[:web_browser_breakdown].first %></td>
+              </tr>
+              <tr>
+                <td>OS</td><td> <%= data[:os_breakdown].first %></td>
+              </tr>
+              <tr>
+                <td>Screen Resolutions</td><td> <%= data[:screen_resolutions].join(" x ") %></td>
+              </tr>
+            </tr>
+          </table>
+        </div>
+
+        <div class="identifier-data col-md-12">
+            <table class="table table-hover">
+              <h3><%= "#{identifier}" %> URL Statistics</h3>
+              <% data[:all_urls_from_most_to_least].each do |key, _value| %>
+              <tr>
+                <td><a href="/sources/<%= identifier %>/urls<%= key[1] %>" target="_blank"><%= "#{identifier}" %><%= "#{key[1]}" %></a>
+                </td>
+              </tr>
+              <% end %>
+            </table>
+        </table>
+      </div>
+    </div>

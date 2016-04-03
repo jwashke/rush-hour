@@ -8,6 +8,6 @@ class RequestType < ActiveRecord::Base
   end
 
   def self.all_verbs_used
-    pluck(:verb)
+    distinct.pluck(:verb)
   end
 end
