@@ -30,7 +30,7 @@ class EventStatistics
     else
       @data = breakdown_by_hour
       @total = event.number_of_times_received
-      :show
+      :event_statistics
     end
   end
 
