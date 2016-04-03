@@ -7,7 +7,7 @@ class ClientStatistics
   def initialize(identifier)
     @identifier = identifier
     @client     = Client.find_by(identifier: identifier)
-    @view = get_client_view
+    @view       = get_client_view
   end
 
   def get_client_view

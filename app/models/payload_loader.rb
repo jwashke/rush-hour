@@ -62,8 +62,6 @@ class PayloadLoader
   end
 
   def get_client_id(id)
-    client =  Client.find_by(identifier: id)
-    return nil if client.nil?
-    client
+    Client.find_by(identifier: id)
   end
 end

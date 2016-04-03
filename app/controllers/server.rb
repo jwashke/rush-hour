@@ -1,6 +1,8 @@
 module RushHour
   class Server < Sinatra::Base
+
     not_found do
+      @data = "Page not found"
       erb :error
     end
 

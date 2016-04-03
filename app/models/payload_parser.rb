@@ -56,7 +56,7 @@ class PayloadParser
 
   def attributes_missing(payload)
     @status = 400
-    @body = "missing one or more attributes"
+    @body = "Missing one or more attributes"
   end
 
   def duplicate_request

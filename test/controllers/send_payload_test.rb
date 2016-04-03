@@ -16,7 +16,6 @@ class SendPayloadTest < Minitest::Test
 
     post '/sources/jumpstartlab/data', payload_request
 
-    # require 'pry'; binding.pry
     assert_equal 1, PayloadRequest.count
     assert_equal 200, last_response.status
     assert_equal "Payload successfully created", last_response.body
@@ -32,7 +31,7 @@ class SendPayloadTest < Minitest::Test
 
     assert_equal 0, PayloadRequest.count
     assert_equal 400, last_response.status
-    assert_equal "missing one or more attributes", last_response.body
+    assert_equal "Missing one or more attributes", last_response.body
   end
 
   def test_returns_already_received_when_duplicate_payload_request_is_recieved
