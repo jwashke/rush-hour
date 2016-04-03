@@ -56,8 +56,6 @@ class PayloadParser
       ip_id:           payload.ip_id)
   end
 
-    # Try hash refactoring
-
   def attributes_missing(payload)
     @status = 400
     @body = "missing one or more attributes"

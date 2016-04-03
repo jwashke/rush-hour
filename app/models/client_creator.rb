@@ -9,17 +9,23 @@ class ClientCreator
   end
 
   def create_client
-    return already_exists if Client.exists?(identifier: client.identifier)
-    return client_created if client.save
-    parameters_missing
+    if Client.exists?(identifier: client.identifier)
+      client_already_exists
+    elsif client.save
+      client_successfully_created
+    else
+      parameters_missing
+    end
   end
 
-  def already_exists
+
+
+  def client_already_exists
     @status = 403
     @body   = "Client with identifier: \"#{client.identifier}\" already exists!"
   end
 
-  def client_created
+  def client_successfully_created
     @status = 200
     @body   = "{\"identifier\":\"#{client.identifier}\"}"
   end
