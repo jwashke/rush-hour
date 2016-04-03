@@ -24,31 +24,37 @@ module RushHour
     end
 
     get '/sources/:identifier' do |identifier|
-      gen_view = ClientStatistics.new(identifier)
-      data     = gen_view.data
-      view     = gen_view.view
-      erb view, locals: {data: data, identifier: identifier}
+      client_stats = ClientStatistics.new(identifier)
+      view         = client_stats.view
+      data         = client_stats.data
+      erb view, locals: { data: data,
+                          identifier: identifier }
     end
 
     get '/sources/:identifier/urls/:relativepath' do |identifier, relativepath|
-      stats_view = UrlStatistics.new(identifier, relativepath)
-      data = stats_view.data
-      view = stats_view.view
-      erb view, locals: {data: data, identifier: identifier, relativepath: relativepath}
+      url_stats = UrlStatistics.new(identifier, relativepath)
+      data      = url_stats.data
+      view      = url_stats.view
+      erb view, locals: { data:         data,
+                          identifier:   identifier,
+                          relativepath: relativepath }
     end
 
     get '/sources/:identifier/events/:eventname' do |identifier, eventname|
       event_stats = EventStatistics.new(identifier, eventname)
-      data  = event_stats.data
-      view  = event_stats.view
-      total = event_stats.total
-      erb view, locals: {data: data, identifier: identifier,
-                        eventname: eventname, total: total}
+      data        = event_stats.data
+      view        = event_stats.view
+      total       = event_stats.total
+      erb view, locals: { data:       data,
+                          identifier: identifier,
+                          eventname:  eventname,
+                          total:      total }
     end
 
     get '/sources/:identifier/index/events' do |identifier|
       events = Client.find_by(identifier: identifier).events.all
-      erb :event_index, locals: {identifier: identifier, events: events}
+      erb :event_index, locals: { identifier: identifier, 
+                                  events:     events }
     end
 
   end

@@ -7,10 +7,10 @@ class ClientStatistics
   def initialize(identifier)
     @identifier = identifier
     @client     = Client.find_by(identifier: identifier)
-    @view       = render_client_view
+    @view = get_client_view
   end
 
-  def render_client_view
+  def get_client_view
     if client_does_not_exist?
       :client_does_not_exist
     elsif client_does_not_have_requests?

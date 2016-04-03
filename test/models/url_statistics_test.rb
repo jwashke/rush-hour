@@ -15,17 +15,17 @@ class UrlStatisticsTest < Minitest::Test
   def test_it_returns_error_page_if_url_doesnt_exist
     create_client
 
-    stats_view = UrlStatistics.new("jumpstartlabs", "/blog")
+    stats_view = UrlStatistics.new("jumpstartlabs", "blog")
 
     assert_equal :url_does_not_exist, stats_view.view
   end
 
   def create_payload_requests
-    url1 = Url.create(root_url: "www.jumpstartlabs.com",
+    url = Url.create(root_url: "www.jumpstartlabs.com",
                       path: "/blog")
 
     PayloadRequest.create(
-      url_id:          url1.id,
+      url_id:          url.id,
       requested_at:    "2013-02-16 21:38:28 -0700",
       response_time:   100,
       referral_id:     1,
@@ -36,7 +36,7 @@ class UrlStatisticsTest < Minitest::Test
       ip_id:           1,
       client_id:       1, )
     PayloadRequest.create(
-      url_id:          url1.id,
+      url_id:          url.id,
       requested_at:    "2013-02-16 21:38:28 -0700",
       response_time:   300,
       referral_id:     1,
