@@ -30,10 +30,10 @@ class ClientStatisticsTest < Minitest::Test
 
   def create_payload_requests
     ua1 = UserAgent.create(browser: "Chrome 24.0.1309",
-                           os: "Mac OS X 10.8.2")
+                           os:      "Mac OS X 10.8.2")
 
     ua2 = UserAgent.create(browser: "IE 9.0",
-                           os: "Mac OS X 10.8.2")
+                           os:      "Mac OS X 10.8.2")
 
     PayloadRequest.create(
       url_id:          1,
@@ -58,5 +58,4 @@ class ClientStatisticsTest < Minitest::Test
       ip_id:           1,
       client_id:       1)
   end
-
 end

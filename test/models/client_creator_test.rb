@@ -79,5 +79,4 @@ class ClientCreatorTest < Minitest::Test
     assert_equal "Identifier can't be blank", client_creator.body
     assert_equal 400, client_creator.status
   end
-
 end
