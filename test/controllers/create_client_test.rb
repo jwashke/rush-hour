@@ -44,7 +44,6 @@ class CreateClientTest < Minitest::Test
   end
 
   def test_create_duplicate_client
-    # skip
     assert_equal 0, Client.count
 
     post '/sources', {
