@@ -42,9 +42,11 @@ module RushHour
 
     get '/sources/:identifier/events/:eventname' do |identifier, eventname|
       event_stats = EventStatistics.new(identifier, eventname)
-      data        = event_stats.data
       view        = event_stats.view
       total       = event_stats.total
+      data        = event_stats.data
+      # require "pry"
+      # binding.pry
       erb view, locals: { data:       data,
                           identifier: identifier,
                           eventname:  eventname,
@@ -53,7 +55,7 @@ module RushHour
 
     get '/sources/:identifier/index/events' do |identifier|
       events = Client.find_by(identifier: identifier).events.all
-      erb :event_index, locals: { identifier: identifier, 
+      erb :event_index, locals: { identifier: identifier,
                                   events:     events }
     end
 
