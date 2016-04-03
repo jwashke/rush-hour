@@ -4,6 +4,11 @@ class Event < ActiveRecord::Base
   validates :name, presence: true
 
   def self.most_to_least_requested
-    joins(:payload_requests).group(:name).order("count_all desc").count
+    group(:name).order("count_all desc").count
   end
+
+  def number_of_times_received
+    payload_requests.count
+  end
+
 end

@@ -4,6 +4,7 @@ class Client < ActiveRecord::Base
   has_many :request_types, through: :payload_requests
   has_many :urls, through: :payload_requests
   has_many :resolutions, through: :payload_requests
+  has_many :events, through: :payload_requests
 
   validates :identifier, presence: true
   validates :root_url,    presence: true
