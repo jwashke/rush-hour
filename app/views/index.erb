@@ -1,0 +1,15 @@
+<h1>Admin View</h1>
+
+<% clients.each do |client| %>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h2><a href="/sources/<%= client.identifier %>"><%= client.identifier.capitalize %></a></h2>
+        <p>
+          <span class="label label-info"><%= client.root_url %></span>
+        </p>
+        <h4><a href="/sources/<%= client.identifier %>/index/events">All Events</a></h4>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,7 +1,21 @@
-<h1>Events Index</h1>
 
-<% events.each do |event| %>
-  <h3><a href="/sources/<%= identifier %>/events/<%= event.name %>">
-    <%= identifier %>/events/<%= event.name %>
-  </a></h3>
-<% end %>
+<h1><%= identifier.capitalize %> Events Index</h1>
+<div class="identifier-data col-md-12">
+
+  <!-- <% events.uniq.each do |event| %>
+    <h3><a href="/sources/<%= identifier %>/events/<%= event.name %>">
+      <%= identifier %>/events/<%= event.name %>
+    </a></h3>
+  <% end %> -->
+
+  <table class="table table-hover">
+    <h3>All Events</h3>
+    <% events.uniq.each do |event| %>
+      <tr>
+        <td><a href="/sources/<%= identifier %>/events/<%= event.name %>">
+          <%= identifier %>/events/<%= event.name %>
+        </a></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

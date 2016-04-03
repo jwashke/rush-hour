@@ -26,8 +26,8 @@ class EventStatistics
       :event_does_not_exist
     else
       @data = breakdown_by_hour
-      @total = event.number_of_times_received
-        :event_statistics
+      @total = breakdown_by_hour.values.reduce(:+)
+      :event_statistics
     end
   end
 
