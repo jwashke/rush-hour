@@ -23,7 +23,8 @@ class EventStatistics
 
   def view
     if event_does_not_exist?
-      :event_does_not_exist
+      @data = "Event does not exist"
+      :error
     else
       @data = breakdown_by_hour
       @total = breakdown_by_hour.values.reduce(:+)

@@ -18,8 +18,6 @@ class ClientCreator
     end
   end
 
-
-
   def client_already_exists
     @status = 403
     @body   = "Client with identifier: \"#{client.identifier}\" already exists!"

@@ -3,7 +3,7 @@
     <h1><%= identifier.capitalize %></h1>
     <h2 class="text-center">event: /<%= eventname %></h2>
   </div>
-  <div class="identifier-data col-md-12">
+  <div class="event-stats col-md-12">
     <table class="table table-hover">
       <h3>Breakdown By Hour</h3>
       <tr class="active">
@@ -11,10 +11,10 @@
         <th>Number Received</th>
       </tr>
       <% data.each_pair do |key, value| %>
-      <tr>
-        <td><%= key %></td>
-        <td><%= value %></td>
-      </tr>
+        <tr>
+          <td><%= key %></td>
+          <td><%= value %></td>
+        </tr>
       <% end %>
       <tr class="success">
         <td>Total Requests</td>

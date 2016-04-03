@@ -13,9 +13,3 @@ class UserAgent < ActiveRecord::Base
     self.distinct.pluck(:os)
   end
 end
-
-# client = Client.find_by(identifier: identifier)
-#
-# client.user_agents.all_web_browsers
-#
-# UserAgent.all_web_browsers

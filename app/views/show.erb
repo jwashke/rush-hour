@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <h1><%= identifier.capitalize %> </h1>
   </div>
-  <div class="identifier-data col-md-12">
+  <div class="response-times col-md-12">
       <table class="table table-hover">
         <h3>Response Times</h3>
         <tr>
@@ -18,7 +18,7 @@
     </table>
   </div>
 
-  <div class="identifier-data col-md-12">
+  <div class="request-types col-md-12">
     <table class="table table-hover">
       <h3>Most Frequent Request Type</h3>
       <% data[:most_frequent_request_type].each do |data| %>
@@ -30,7 +30,7 @@
     </table>
   </div>
 
-  <div class="identifier-data col-md-12">
+  <div class="http-verbs col-md-12">
     <table class="table table-hover">
       <h3>HTTP Verbs Used</h3>
       <% data[:all_http_verbs_used].each do |data| %>
@@ -41,7 +41,7 @@
     </table>
   </div>
 
-  <div class="identifier-data col-md-12">
+  <div class="urls col-md-12">
     <table class="table table-hover">
       <h3>All URLs from Most to Least Requested</h3>
       <% data[:all_urls_from_most_to_least].each do |data| %>
@@ -53,9 +53,9 @@
     </table>
   </div>
 
-  <div class="identifier-data col-md-12">
+  <div class="browser-os col-md-12">
     <table class="table table-hover">
-      <h3>Browser, OS & Resolution Breakdown</h3>
+      <h3>Browser & OS Breakdown</h3>
       <tr>
         <td>Web Browser:</td><td> <%= data[:web_browser_breakdown].first %></td>
       </tr>
@@ -65,7 +65,7 @@
     </table>
   </div>
 
-  <div class="identifer-data col-md-12">
+  <div class="resolution col-md-12">
     <table class="table table-hover">
       <h3>Resolution Breakdown</h3>
       <% data[:screen_resolutions].each do |resolution| %>
@@ -76,14 +76,14 @@
     </table>
   </div>
 
-  <div class="identifier-data col-md-12">
+  <div class="other-sources col-md-12">
     <table class="table table-hover">
       <h3><%= "#{identifier}" %> URL Statistics</h3>
       <% data[:all_urls_from_most_to_least].each do |key, _value| %>
-      <tr>
-        <td><a href="/sources/<%= identifier %>/urls<%= key[1] %>" target="_blank"><%= "#{identifier}" %><%= "#{key[1]}" %></a>
-        </td>
-      </tr>
+        <tr>
+          <td><a href="/sources/<%= identifier %>/urls<%= key[1] %>" target="_blank"><%= "#{identifier}" %><%= "#{key[1]}" %></a>
+          </td>
+        </tr>
       <% end %>
     </table>
   </div>

@@ -17,12 +17,12 @@ class UrlStatisticsTest < Minitest::Test
 
     stats_view = UrlStatistics.new("jumpstartlabs", "blog")
 
-    assert_equal :url_does_not_exist, stats_view.view
+    assert_equal :error, stats_view.view
   end
 
   def create_payload_requests
     url = Url.create(root_url: "www.jumpstartlabs.com",
-                      path: "/blog")
+                     path:     "/blog")
 
     PayloadRequest.create(
       url_id:          url.id,
@@ -35,6 +35,7 @@ class UrlStatisticsTest < Minitest::Test
       resolution_id:   1,
       ip_id:           1,
       client_id:       1, )
+
     PayloadRequest.create(
       url_id:          url.id,
       requested_at:    "2013-02-16 21:38:28 -0700",

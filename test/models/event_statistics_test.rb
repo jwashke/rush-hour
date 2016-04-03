@@ -7,14 +7,12 @@ class EventStatisticsTest < Minitest::Test
     create_client
     create_payload_requests
 
-    event      = EventStatistics.new("jumpstartlabs", "socialLogin")
+    event = EventStatistics.new("jumpstartlabs", "socialLogin")
     event.view
-    total_freq = 2
-    hour_freq  = {0=>0, 1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>0, 8=>0, 9=>0,
-                  10=>0, 11=>0, 12=>1, 13=>0, 14=>0, 15=>0, 16=>0, 17=>0, 18=>0,
-                  19=>0, 20=>0, 21=>1, 22=>0, 23=>0}
-    assert_equal hour_freq, event.breakdown_by_hour
-    assert_equal total_freq, event.total
+    total_frequency = 2
+
+    assert_equal hour_frequency, event.breakdown_by_hour
+    assert_equal total_frequency, event.total
   end
 
   def test_it_returns_error_page_invalid_event
@@ -23,10 +21,10 @@ class EventStatisticsTest < Minitest::Test
 
     event = EventStatistics.new("jumpstartlabs", "neverHAPPENED")
 
-    assert_equal :event_does_not_exist, event.view
+    assert_equal :error, event.view
   end
 
-  def hour_freq
+  def hour_frequency
     { 0  => 0,
       1  => 0,
       2  => 0,
@@ -91,5 +89,4 @@ class EventStatisticsTest < Minitest::Test
                        client_id: 1)
 
   end
-
 end

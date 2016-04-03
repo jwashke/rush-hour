@@ -9,8 +9,6 @@ class PayloadParser
 
   def send_request(params)
     parse_and_send_request(params) if params_are_valid?(params, params["id"])
-    # rescue
-    #   return attributes_missing
   end
 
   def params_are_valid?(params, identifier)
@@ -58,7 +56,7 @@ class PayloadParser
 
   def attributes_missing(payload)
     @status = 400
-    @body = "missing one or more attributes"
+    @body = "Missing one or more attributes"
   end
 
   def duplicate_request
