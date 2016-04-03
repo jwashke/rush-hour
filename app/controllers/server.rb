@@ -19,9 +19,9 @@ module RushHour
     end
 
     get '/sources/:identifier' do |identifier|
-      gen_view = ClientStatistics.new(identifier)
-      data     = gen_view.data
-      view     = gen_view.view
+      client_stats = ClientStatistics.new(identifier)
+      view         = client_stats.get_client_view
+      data         = client_stats.data
       erb view, locals: {data: data, identifier: identifier}
     end
 
