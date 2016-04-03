@@ -26,11 +26,11 @@ class Url < ActiveRecord::Base
   end
 
   def all_response_times
-    payload_requests.order(response_time: :desc).pluck(:response_time)
+    payload_requests.order(response_time: :desc).group(:response_time).count
   end
 
   def find_verbs
-    payload_requests.joins(:request_type).pluck(:verb)
+    payload_requests.joins(:request_type).group(:verb).count
   end
 
   def top_referrers

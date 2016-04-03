@@ -1,15 +1,77 @@
 <div class="row">
   <div class="col-md-12">
     <h1><%= identifier.capitalize %></h1>
+    <h2 class="text-center">path: /<%= relativepath %></h2>
   </div>
-  <div class="identifier-data">
-    <h4>Max Response Time: <%= data[:max_response_time] %></h4>
-    <h4>Min Response Time: <%= data[:min_response_time] %></h4>
-    <h4>All Response Times Acrosss All Requests: <%= data[:all_response_times] %></h4>
-    <h4>Average Responses Times: <%= data[:average_response_times] %></h4>
-    <h4>Associated HTTP Verbs: <%= data[:find_verbs] %></h4>
-    <h4>Top Three Referrers: <%= data[:top_referrers] %></h4>
-    <h4>Three Most Popular User Agents: <%= data[:top_user_agents] %></h4>
+  <div class="identifier-data col-md-12">
+      <table class="table table-hover">
+        <h3>Response Times</h3>
+        <tr>
+          <td>Average</td><td> <%= data[:average_response_times] %></td>
+        </tr>
+        <tr>
+          <td>Maximum</td><td> <%= data[:max_response_time] %></td>
+        </tr>
+        <tr>
+          <td>Minimum</td><td> <%= data[:min_response_time] %></td>
+        </tr>
+      </tr>
+    </table>
+  </div>
 
+  <div class="identifier-data col-md-12">
+      <table class="table table-hover">
+        <h3>All Response Times</h3>
+        <tr class="active">
+          <th>Response Time</th>
+          <th>Number of Requests</th>
+        </tr>
+        <% data[:all_response_times].each do |data| %>
+        <tr>
+          <td><%= data.first %></td>
+          <td><%= data.last %></td>
+        </tr>
+        <% end %>
+    </table>
+  </div>
+
+  <div class="identifier-data col-md-12">
+      <table class="table table-hover">
+        <h3>HTTP Verbs Used</h3>
+        <tr class="active">
+          <th>Verb</th>
+          <th>Times Used</th>
+        </tr>
+        <% data[:find_verbs].each do |data| %>
+        <tr>
+          <td><%= data.first %></td>
+          <td><%= data.last %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+
+  <div class="identifier-data col-md-12">
+    <table class="table table-hover">
+      <h3>Top Three Referrers</h3>
+      <% data[:top_referrers].each do |data| %>
+        <tr>
+          <td><%= data.first.join("") %></h4></td>
+          <td><%= data.last %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="identifier-data col-md-12">
+    <table class="table table-hover">
+      <h3>Three Most Popular User Agents</h3>
+      <% data[:top_user_agents].each do |data| %>
+        <tr>
+          <td><%= data.first.join("; ") %></h4></td>
+          <td><%= data.last %></td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>
