@@ -2,13 +2,13 @@ module RushHour
   class Server < Sinatra::Base
 
     not_found do
-      @data = "Page not found"
-      erb :error
+      data = "Page not found"
+      erb :error, locals: { data: data }
     end
 
     get '/' do
       clients = Client.all
-      erb :index, locals: {clients: clients}
+      erb :index, locals: { clients: clients }
     end
 
     post '/sources' do
