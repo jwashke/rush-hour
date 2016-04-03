@@ -45,8 +45,6 @@ module RushHour
       view        = event_stats.view
       total       = event_stats.total
       data        = event_stats.data
-      # require "pry"
-      # binding.pry
       erb view, locals: { data:       data,
                           identifier: identifier,
                           eventname:  eventname,

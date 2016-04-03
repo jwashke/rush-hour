@@ -88,7 +88,7 @@ module TestHelper
       "url" => "http://www.jumpstartlabs.com/apply",
       "requestedAt" => Time.now.to_s,
       "respondedIn" => 10,
-      "referredBy" => "www.referral.com/",
+      "referredBy" => "http://www.referral.com/",
       "requestType" => "GET",
       "eventName" => "name",
       "userAgent" => user_agent,

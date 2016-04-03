@@ -3,7 +3,7 @@
     <h1><%= identifier.capitalize %></h1>
     <h2 class="text-center">path: /<%= relativepath %></h2>
   </div>
-  <div class="identifier-data col-md-12">
+  <div class="response-times col-md-12">
       <table class="table table-hover">
         <h3>Response Times</h3>
         <tr>
@@ -19,7 +19,7 @@
     </table>
   </div>
 
-  <div class="identifier-data col-md-12">
+  <div class="all-response-times col-md-12">
       <table class="table table-hover">
         <h3>All Response Times</h3>
         <tr class="active">
@@ -35,7 +35,7 @@
     </table>
   </div>
 
-  <div class="identifier-data col-md-12">
+  <div class="http-verbs col-md-12">
       <table class="table table-hover">
         <h3>HTTP Verbs Used</h3>
         <tr class="active">
@@ -51,7 +51,7 @@
       </table>
     </div>
 
-  <div class="identifier-data col-md-12">
+  <div class="top-referrers col-md-12">
     <table class="table table-hover">
       <h3>Top Three Referrers</h3>
       <% data[:top_referrers].each do |data| %>
@@ -63,7 +63,7 @@
     </table>
   </div>
 
-  <div class="identifier-data col-md-12">
+  <div class="popular-user-agents col-md-12">
     <table class="table table-hover">
       <h3>Three Most Popular User Agents</h3>
       <% data[:top_user_agents].each do |data| %>
