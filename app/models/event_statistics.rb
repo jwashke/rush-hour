@@ -1,22 +1,19 @@
 class EventStatistics
-  attr_reader :eventname,
-              :client,
+  attr_reader :client,
               :event,
-              :pr,
+              :payload_requests,
               :data,
               :total
 
   def initialize(identifier, eventname)
-    @client = Client.find_by(identifier: identifier)
-    @event  = client.events.find_by(name: eventname)
-    @pr     = PayloadRequest.where(event: event, client: client)
-    view
+    @client           = Client.find_by(identifier: identifier)
+    @event            = client.events.find_by(name: eventname)
+    @payload_requests = PayloadRequest.where(event: event, client: client)
   end
 
   def breakdown_by_hour
-    # pr.group(:requested_at).count
-    pr.map.with_object(initialize_hour_hash) do |preq, hash|
-      hash[Time.parse(preq.requested_at).hour] += 1
+    payload_requests.map.with_object(initialize_hour_hash) do |request, hash|
+      hash[Time.parse(request.requested_at).hour] += 1
     end
   end
 
@@ -30,7 +27,7 @@ class EventStatistics
     else
       @data = breakdown_by_hour
       @total = event.number_of_times_received
-      :event_statistics
+        :event_statistics
     end
   end
 
@@ -59,6 +56,5 @@ class EventStatistics
       21 => 0,
       22 => 0,
       23 => 0 }
-    end
-
+  end
 end

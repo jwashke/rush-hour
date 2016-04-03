@@ -1,33 +1,32 @@
 class UrlStatistics
-  attr_reader :identifier,
-              :relativepath,
-              :url,
+  attr_reader :path,
               :client,
               :view,
-              :data
+              :data,
+              :url
 
-  def initialize(identifier, relativepath)
-    @identifier   = identifier
-    @relativepath = "/" + relativepath
+  def initialize(identifier, path)
+    @path         = "/" + path
     @client       = Client.find_by(identifier: identifier)
-    @view         = render_url_stats_view
+    @view         = get_url_view
   end
 
-  def render_url_stats_view
-    if url_does_not_exist?
-      :url_does_not_exist
-    else
-      @url = client.urls.find_by(path: relativepath)
+  def get_url_view
+    @url = client.urls.find_by(path: path)
+
+    if url_exists?
+      @data = url_data
       :show_url_statistics
+    else
+      :url_does_not_exist
     end
   end
 
-  def url_does_not_exist?
-
-    !client.urls.exists?(path: relativepath)
+  def url_exists?
+    client.urls.exists?(path: path)
   end
 
-  def data
+  def url_data
     {
       max_response_time:           url.max_response_time,
       min_response_time:           url.min_response_time,
