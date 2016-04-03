@@ -18,7 +18,7 @@ class PayloadRequestTest < Minitest::Test
     request = PayloadRequest.all.first
 
     assert_equal 1, request.url_id
-    assert_equal "2013-02-16 21:38:28 -0700".to_date, request.requested_at
+    assert_equal "2013-02-16 21:38:28 -0700", request.requested_at
     assert_equal 1, request.response_time
     assert_equal 1, request.referral_id
     assert_equal 1, request.request_type_id

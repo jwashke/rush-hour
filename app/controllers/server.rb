@@ -32,5 +32,19 @@ module RushHour
       erb view, locals: {data: data, identifier: identifier, relativepath: relativepath}
     end
 
+    get '/sources/:identifier/events/:eventname' do |identifier, eventname|
+      event_stats = EventStatistics.new(identifier, eventname)
+      data  = event_stats.data
+      view  = event_stats.view
+      total = event_stats.total
+      erb view, locals: {data: data, identifier: identifier,
+                        eventname: eventname, total: total}
+    end
+
+    get '/sources/:identifier/index/events' do |identifier|
+      events = Client.find_by(identifier: identifier).events.all
+      erb :event_index, locals: {identifier: identifier, events: events}
+    end
+
   end
 end
