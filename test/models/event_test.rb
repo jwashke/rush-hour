@@ -35,6 +35,14 @@ class EventTest < Minitest::Test
     assert_equal 2, event.payload_requests.count
   end
 
+  def test_it_can_return_number_of_times_recieved
+    event = Event.create(name: "socialLogin")
+
+    create_generic_payload_requests
+
+    assert_equal 2, event.number_of_times_received
+  end
+
   def create_payload_requests(event1_id, event2_id)
     PayloadRequest.create(url_id: 1,
                     requested_at: "2013-02-16 21:38:28 -0700",
