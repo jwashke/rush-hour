@@ -71,6 +71,7 @@ GEM
     rack-test (0.6.3)
       rack (>= 1.0)
     rainbow (2.1.0)
+    rake (11.1.2)
     reek (3.11)
       codeclimate-engine-rb (~> 0.3.1)
       parser (~> 2.3, >= 2.3.0.6)
@@ -130,6 +131,7 @@ DEPENDENCIES
   pg
   pry
   rack-test
+  rake
   reek
   shotgun
   sinatra

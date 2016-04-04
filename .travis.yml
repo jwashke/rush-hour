@@ -1,11 +1,14 @@
 language: ruby
+before install:
 rvm:
   - 2.2.2
 
 script:
   - bundle install
-  - bundle exec rake db:setup
-  - bundle exec rake
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
+  - bundle exec rake db:test:prepare
+  - bundle exec rake test
 
   addons:
     code_climate:

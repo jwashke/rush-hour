@@ -8,6 +8,7 @@ gem 'user_agent_parser'
 gem 'cane'
 gem 'reek'
 gem "codeclimate-test-reporter", group: :test, require: nil
+gem 'rake'
 
 group :development, :test do
   gem 'shotgun'
