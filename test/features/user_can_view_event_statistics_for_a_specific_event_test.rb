@@ -21,4 +21,15 @@ class UserCanViewStatisticsForSpecificEvents < Minitest::Test
       assert page.has_content?("1")
     end
   end
+
+  def test_user_sees_error_page_if_incorrect_client_identifier
+    load_feature_test_data
+
+    visit '/sources/jumpstartlabs/events/notname'
+
+    assert page.has_content?("Something went wrong!")
+    within(".bork") do
+      assert page.has_content?("Event does not exist - bork bork bork!")
+    end
+  end
 end

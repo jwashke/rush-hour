@@ -54,9 +54,11 @@ module RushHour
     end
 
     get '/sources/:identifier/index/events' do |identifier|
-      events = Client.find_by(identifier: identifier).events.all
-      erb :event_index, locals: { identifier: identifier,
-                                  events:     events }
+      event_stats = EventStatistics.new(identifier, nil)
+      view        = event_stats.get_all_events
+      data        = event_stats.data
+      erb view, locals: { identifier: identifier,
+                          data:       data }
     end
 
   end

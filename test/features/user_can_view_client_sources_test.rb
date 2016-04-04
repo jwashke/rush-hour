@@ -43,4 +43,14 @@ class UserCanViewClientSources < Minitest::Test
       assert page.has_content?("jumpstartlabs/apply")
     end
   end
+
+  def test_user_sees_error_page_if_incorrect_client_identifier
+
+    visit '/sources/notarealidentifier'
+
+    assert page.has_content?("Something went wrong!")
+    within(".bork") do
+      assert page.has_content?("Client doesn't exist - bork bork bork!")
+    end
+  end
 end
