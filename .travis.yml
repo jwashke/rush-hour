@@ -1,15 +1,15 @@
 language: ruby
-before install:
+
 rvm:
   - 2.2.2
 
 script:
-  - bundle install
-  - bundle exec rake db:create
-  - bundle exec rake db:migrate
-  - bundle exec rake db:test:prepare
-  - bundle exec rake test
+ - bundle install
+ - bundle exec rake db:create
+ - bundle exec rake db:migrate
+ - bundle exec rake db:test:prepare
+ - bundle exec rake test
 
-  addons:
-    code_climate:
-        repo_token: 8efdd7d50a3e654dda05d522a35a184e4970ac4ed194f2f84e92f086e3a94150
+addons:
+  code_climate:
+    repo_token: 8efdd7d50a3e654dda05d522a35a184e4970ac4ed194f2f84e92f086e3a94150
