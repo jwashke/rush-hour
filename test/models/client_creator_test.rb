@@ -5,7 +5,7 @@ class ClientCreatorTest < Minitest::Test
 
   def test_it_can_create_a_client
     params = {identifier: "jumpstartlab",
-                 rootUrl: "www.jumpstartlabs.com"}
+              rootUrl:    "www.jumpstartlabs.com"}
 
     client_creator = ClientCreator.new(params)
     client_creator.create_client
@@ -38,7 +38,7 @@ class ClientCreatorTest < Minitest::Test
 
   def test_it_creates_status_and_body_for_new_client
     params = {identifier: "jumpstartlab",
-                 rootUrl: "www.jumpstartlabs.com"}
+              rootUrl:    "www.jumpstartlabs.com"}
 
     client_creator = ClientCreator.new(params)
     client_creator.create_client
@@ -50,7 +50,7 @@ class ClientCreatorTest < Minitest::Test
 
   def test_it_creates_status_and_body_for_duplicate_client
     params = {identifier: "jumpstartlab",
-                 rootUrl: "www.jumpstartlabs.com"}
+              rootUrl:    "www.jumpstartlabs.com"}
 
     client_creator = ClientCreator.new(params)
     client_creator.create_client

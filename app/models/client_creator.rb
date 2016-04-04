@@ -10,26 +10,22 @@ class ClientCreator
 
   def create_client
     if Client.exists?(identifier: client.identifier)
-      client_already_exists
+      @status = 403
     elsif client.save
-      client_successfully_created
+      @status = 200
     else
-      parameters_missing
+      @status = 400
     end
+    @body = status_body_map[status]
   end
 
-  def client_already_exists
-    @status = 403
-    @body   = "Client with identifier: \"#{client.identifier}\" already exists!"
+
+  def status_body_map
+    {
+      200 => "{\"identifier\":\"#{client.identifier}\"}",
+      400 => "#{client.errors.full_messages.join(", ")}",
+      403 => "Client with identifier: \"#{client.identifier}\" already exists!"
+    }
   end
 
-  def client_successfully_created
-    @status = 200
-    @body   = "{\"identifier\":\"#{client.identifier}\"}"
-  end
-
-  def parameters_missing
-    @status = 400
-    @body   = "#{client.errors.full_messages.join(", ")}"
-  end
 end
