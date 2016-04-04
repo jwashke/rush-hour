@@ -12,8 +12,9 @@ class UrlStatistics
   end
 
   def get_url_view
-    @url = client.urls.find_by(path: path)
+
     if url_exists?
+      @url = client.urls.find_by(path: path)
       @data = url_data
       :show_url_statistics
     else
@@ -23,6 +24,7 @@ class UrlStatistics
   end
 
   def url_exists?
+    return false if client.nil?
     client.urls.exists?(path: path)
   end
 

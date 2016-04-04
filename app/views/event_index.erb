@@ -2,7 +2,7 @@
 <div class="events-index col-md-12">
   <table class="table table-hover">
     <h3>All Events</h3>
-    <% events.uniq.each do |event| %>
+    <% data.uniq.each do |event| %>
       <tr>
         <td><a href="/sources/<%= identifier %>/events/<%= event.name %>">
           <%= identifier %>/events/<%= event.name %>

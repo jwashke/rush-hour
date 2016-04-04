@@ -2,6 +2,10 @@
 database_name = "rush-hour-#{RushHour::Server.environment}"
 db = URI.parse(ENV['DATABASE_URL'] || "postgres://localhost/#{database_name}")
 
+require 'active_record'
+
+ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+
 # connect ActiveRecord with the current database
 ActiveRecord::Base.establish_connection(
   :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,

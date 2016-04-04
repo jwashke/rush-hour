@@ -46,4 +46,14 @@ class UserCanViewStatisticsForSpecificUrls < Minitest::Test
       assert page.has_content?("1")
     end
   end
+
+  def test_user_sees_error_page_with_incorrect_url
+      visit '/sources/jumpstartlabs/urls/notaurl'
+
+      assert page.has_content?("Something went wrong!")
+
+      within(".bork") do
+      assert page.has_content?("Url does not exist - bork bork bork!")
+    end
+  end
 end
