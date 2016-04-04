@@ -1,6 +1,6 @@
 # Rush Hour
 
-[![Code Climate](https://codeclimate.com/github/jwashke/rush-hour/badges/gpa.svg)](https://codeclimate.com/github/jwashke/rush-hour)[![Test Coverage](https://codeclimate.com/github/jwashke/rush-hour/badges/coverage.svg)](https://codeclimate.com/github/jwashke/rush-hour/coverage)(https://codeclimate.com/github/jwashke/rush-hour/coverage)[![Issue Count](https://codeclimate.com/github/jwashke/rush-hour/badges/issue_count.svg)](https://codeclimate.com/github/jwashke/rush-hour)[![Build Status](https://travis-ci.org/jwashke/rush-hour.svg?branch=master)](https://travis-ci.org/jwashke/rush-hour)
+[![Code Climate](https://codeclimate.com/github/jwashke/rush-hour/badges/gpa.svg)](https://codeclimate.com/github/jwashke/rush-hour)[![Test Coverage](https://codeclimate.com/github/jwashke/rush-hour/coverage)][![Issue Count](https://codeclimate.com/github/jwashke/rush-hour/badges/issue_count.svg)](https://codeclimate.com/github/jwashke/rush-hour)[![Build Status](https://travis-ci.org/jwashke/rush-hour.svg?branch=master)](https://travis-ci.org/jwashke/rush-hour)
 
 Rush Hour is a simple analytics platform to analyze http requests received by a website.
 
