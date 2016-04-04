@@ -32,4 +32,13 @@ class ReferralTest < Minitest::Test
 
     assert_equal 2, referral.payload_requests.count
   end
+
+  def test_it_can_return_the_full_path
+    Referral.create(root_url: "http://jumpstartlabs.com",
+                        path: "/example")
+
+    referral = Referral.first
+
+    assert_equal "http://jumpstartlabs.com/example", referral.full_path
+  end
 end
