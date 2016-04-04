@@ -5,9 +5,9 @@ class EventStatistics
               :data,
               :total
 
-  def initialize(identifier, eventname)
+  def initialize(identifier, name)
     @client           = Client.find_by(identifier: identifier)
-    @event            = client.events.find_by(name: eventname)
+    @event            = client.events.find_by(name: name) unless name.nil?
     @payload_requests = PayloadRequest.where(event: event, client: client)
   end
 
@@ -29,6 +29,16 @@ class EventStatistics
       @data = breakdown_by_hour
       @total = breakdown_by_hour.values.reduce(:+)
       :event_statistics
+    end
+  end
+
+  def get_all_events
+    if client.nil?
+      @data = "This client does not exist"
+      :error
+    else
+      @data = client.events.all
+      :event_index
     end
   end
 
