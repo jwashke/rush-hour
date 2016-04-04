@@ -10,4 +10,4 @@ test:
 
 production:
   adapter: postgresql
-  database: rush-hour-production
+  database: db/rush-hour-productionpg
