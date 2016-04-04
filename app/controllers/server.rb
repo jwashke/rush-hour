@@ -18,7 +18,7 @@ module RushHour
       body client_creator.body
     end
 
-    post '/sources/:id/data' do |id|
+    post '/sources/:id/data' do
       parser = PayloadParser.new
       parser.send_request(params)
       status parser.status

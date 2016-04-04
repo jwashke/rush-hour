@@ -38,7 +38,7 @@ class PayloadParser
   def save_payload_and_set_status(payload)
     return duplicate_request if payload_request_exists?(payload)
     return payload_successful if payload.save
-    attributes_missing(payload)
+    attributes_missing
   end
 
   def payload_request_exists?(payload)
@@ -54,7 +54,7 @@ class PayloadParser
       ip_id:           payload.ip_id)
   end
 
-  def attributes_missing(payload)
+  def attributes_missing
     @status = 400
     @body = "Missing one or more attributes"
   end
